@@ -1,0 +1,143 @@
+/* =========================================================================
+   Hero.module.css  ·  Estilos de la portada
+   -------------------------------------------------------------------------
+   Todo el contenido va en una sola columna centrada (sin foto de perfil:
+   esa vive ahora en About.module.css, dentro de la sección Perfil).
+   ========================================================================= */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 90px;
+  padding-bottom: 50px;
+  position: relative;
+}
+
+/* Columna centrada: flexbox en vez de "text-align: center" para que
+   badge, botones y tags queden perfectamente alineados entre sí sin
+   depender del ancho de cada línea de texto. */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+/* ---------- Badge de disponibilidad ----------
+   .tagWrap es un contenedor "relative" que centra internamente el brillo
+   (.tagGlow) detrás del badge (.tag): así el resplandor queda siempre
+   alineado con el texto sin importar cuánto mida. */
+.tagWrap {
+  position: relative;
+  display: inline-flex;
+  margin-bottom: 30px;
+}
+
+.tagGlow {
+  position: absolute;
+  inset: -14px -22px;
+  border-radius: 30px;
+  background: radial-gradient(ellipse at center, rgba(var(--teal-bright-rgb), 0.16), transparent 70%);
+  filter: blur(6px);
+  z-index: 0;
+}
+
+.tag {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: .74rem;
+  color: var(--teal-bright);
+  border: 1px solid var(--line);
+  padding: 7px 16px;
+  border-radius: 4px;
+  background: rgba(var(--teal-rgb), .07);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal-bright);
+  animation: pulse 2.4s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1;  box-shadow: 0 0 0 0 rgba(var(--teal-bright-rgb),.5); }
+  50%      { opacity: .5; box-shadow: 0 0 0 6px rgba(var(--teal-bright-rgb),0); }
+}
+
+/* ---------- Titular ----------
+   Tope de 2.7rem (con .content ensanchado a 920px junto con este cambio)
+   para que, con el <br/> del JSX, el titular quede siempre en 2 líneas en
+   escritorio y nunca rompa una tercera vez. */
+.title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.85rem, 3.35vw, 2.7rem);
+  line-height: 1.2;
+  color: var(--white);
+  letter-spacing: -.01em;
+  margin-bottom: 34px;
+}
+
+.sep {
+  color: var(--teal-bright);
+  font-weight: 400;
+  margin: 0 .25em;
+}
+
+/* ---------- Botones ----------
+   ":global(.btn)" apunta a la clase compartida de global.css SOLO cuando
+   está dentro de .actions: así los 5 botones (Ver proyectos, LinkedIn,
+   GitHub, WhatsApp, Descargar CV) quedan un poco más compactos y caben
+   los 5 en una misma fila en escritorio, sin tocar el tamaño del botón
+   en otras partes del sitio (como el de la página de detalle). */
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 34px;
+}
+.actions :global(.btn) {
+  padding: 11px 18px;
+  font-size: 0.86rem;
+  gap: 7px;
+}
+
+/* ---------- Etiquetas de tecnologías básicas ---------- */
+.techList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 26px;
+  list-style: none;
+}
+.techItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--mono);
+  font-size: 0.92rem;
+  color: var(--slate-light);
+}
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+@media (max-width: 560px) {
+  .hero { padding-top: 110px; }
+  .title { font-size: clamp(1.6rem, 6.8vw, 2.15rem); }
+  .actions .btn { flex: 1 1 100%; justify-content: center; }
+}

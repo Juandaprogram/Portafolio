@@ -1,0 +1,45 @@
+.section {
+  padding: 108px 0;
+  position: relative;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: linear-gradient(165deg, var(--navy-900), rgba(var(--navy-850-rgb), 0.4));
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 28px;
+  transition: 0.3s;
+}
+.card:hover {
+  border-color: rgba(var(--teal-rgb), 0.45);
+  transform: translateY(-4px);
+}
+.periodo {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--teal-bright);
+  margin-bottom: 14px;
+}
+.card h3 {
+  font-family: var(--display);
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.institucion {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--slate-light);
+}
+.detalle {
+  font-size: 0.89rem;
+  color: var(--slate);
+  margin-top: 12px;
+  text-align: justify;
+}

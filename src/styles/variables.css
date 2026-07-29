@@ -1,0 +1,118 @@
+/* =========================================================================
+   variables.css  ·  Paleta de colores y fuentes del portafolio
+   -------------------------------------------------------------------------
+   Definir los colores aquí una sola vez permite cambiarlos en TODO el
+   sitio editando un solo valor (por ejemplo, --royal-bright cambia en
+   todos los botones a la vez). El resto de archivos CSS los usa
+   escribiendo var(--nombre).
+
+   TEMA CLARO / OSCURO
+   -------------------------------------------------------------------------
+   En vez de duplicar los estilos de cada componente, definimos DOS
+   juegos de valores para las mismas variables:
+     - ":root"                    → tema oscuro (el de siempre, por defecto)
+     - ":root[data-theme='light']" → tema claro (mismo nombre de variable,
+                                      valor distinto)
+   El atributo "data-theme" lo pone el hook useTheme.js en <html>. Como
+   todos los componentes ya pintan sus colores con var(--navy-950),
+   var(--white), etc., basta con cambiar ese atributo para que TODO el
+   sitio cambie de tema sin tocar ni un .module.css más.
+
+   UNA SOLA PALETA DE MARCA (navy + dorado mostaza)
+   -------------------------------------------------------------------------
+   #0b2239  #1e4b6a  #c8a24a  #ead9b6  #f8f2e6
+
+   El acento (--royal-bright/--teal/--teal-bright) es el MISMO dorado
+   mostaza #c8a24a en los dos temas — es el color de marca. La única
+   excepción es --teal-bright, que en modo claro se guarda más oscuro
+   (#82611c en vez de #c8a24a): --teal-bright es la variable que se usa
+   como COLOR DE TEXTO (kicker, enlaces, iconos) en varios componentes, y
+   el dorado puro sobre el fondo crema del modo claro apenas da ~2.2:1 de
+   contraste (se ve "lavado"). Oscurecerlo sube ese contraste a ~5:1,
+   manteniendo el mismo tono de dorado. --royal-bright, en cambio, nunca
+   se usa como texto (solo fondos, bordes y sombras: botón primario,
+   glows), así que sí se mantiene como el dorado puro en los dos temas.
+
+   VARIABLES "-rgb"
+   -------------------------------------------------------------------------
+   Junto a cada color que en algún componente se usa con transparencia
+   (rgba(...) para glows, sombras, fondos translúcidos) guardamos también
+   su versión "R,G,B" sin el "rgb()" envolvente, para poder escribir
+   "rgba(var(--teal-rgb), .15)" en el CSS de los componentes. Así esos
+   componentes también cambian solos de color al cambiar de paleta aquí,
+   sin quedar con un color "hardcodeado" suelto.
+   ========================================================================= */
+:root {
+  /* ---------- Tema oscuro: navy + dorado mostaza ---------- */
+  --navy-950: #081a2e; /* fondo más oscuro (derivado, aún más oscuro que el navy principal) */
+  --navy-900: #0b2239; /* fondo principal */
+  --navy-850: #1e4b6a; /* fondo de tarjetas / paneles */
+  --navy-800: #173850; /* variante más oscura de las tarjetas, para degradados (más oscura
+  a propósito: el texto dorado que cae sobre esta esquina -enlaces de Proyectos- necesita
+  ese contraste extra frente al navy medio de --navy-850) */
+  --line: #2a557a; /* color de los bordes: tono intermedio derivado del navy */
+  --line-soft: #1b3c5a; /* bordes más sutiles */
+  --slate: #a49d87; /* crema apagado para texto secundario/terciario (fechas, footer) */
+  --slate-light: #ead9b6; /* crema dorado suave para texto normal */
+  --white: #f8f2e6; /* crema claro para títulos */
+
+  /* ---------- Acentos: dorado mostaza, el color de marca (ver nota
+     arriba sobre por qué --teal-bright es la única variable que difiere
+     entre temas). --royal-bright/--teal-bright son el dorado vivo -botón
+     primario, glows, iconos-; --royal/--teal son una variante más oscura
+     -hover, bordes y fondos sutiles-. ---------- */
+  --royal: #a0823b;
+  --royal-bright: #c8a24a;
+  --teal: #a0823b;
+  --teal-bright: #c8a24a;
+
+  /* ---------- Versiones "R,G,B" para usar con rgba() ---------- */
+  --navy-950-rgb: 8, 26, 46;
+  --navy-850-rgb: 30, 75, 106;
+  --navy-800-rgb: 23, 56, 80;
+  --line-rgb: 42, 85, 122;
+  --slate-rgb: 164, 157, 135;
+  --royal-bright-rgb: 200, 162, 74;
+  --teal-rgb: 160, 130, 59;
+  --teal-bright-rgb: 200, 162, 74;
+
+  /* Las 3 familias de fuentes que usamos: */
+  --display: "Fraunces", serif; /* títulos (serif elegante) */
+  --sans: "Libre Franklin", sans-serif; /* texto normal */
+  --mono: "IBM Plex Mono", monospace; /* etiquetas tipo "código" */
+}
+
+/* ---------- Tema claro: navy + dorado mostaza ----------
+   Mismas variables, valores distintos. Solo se activa cuando
+   <html data-theme="light">.
+
+   El botón primario usa --royal-bright (dorado puro #c8a24a) con texto
+   navy oscuro fijo, igual que en modo oscuro: mismo color de botón en
+   los dos temas. El texto navy sobre ese dorado da ~6.9:1 de contraste. */
+:root[data-theme="light"] {
+  --navy-950: #f8f2e6; /* fondo principal, crema muy claro */
+  --navy-900: #f4ebd8; /* fondo secundario / base de tarjetas de Certificaciones, Educación y Stack */
+  --navy-850: #ead9b6; /* fondo de tarjetas (Proyectos, Contacto), distinto del fondo principal */
+  --navy-800: #f1e5cd; /* variante más clara de la tarjeta, para degradados (más clara a
+  propósito, por la misma razón de contraste que en modo oscuro pero en sentido inverso:
+  el dorado oscurecido de --teal-bright necesita un fondo bien claro debajo) */
+  --line: #cdcdc7; /* borde suave derivado del navy sobre el fondo crema */
+  --line-soft: #e0ddd5; /* bordes aún más sutiles */
+  --slate: #55697b; /* texto secundario/terciario (fechas, footer), navy suavizado */
+  --slate-light: #1e4b6a; /* texto secundario, navy medio */
+  --white: #0b2239; /* texto principal / títulos, navy oscuro */
+
+  --royal: #a0823b; /* variante oscura del dorado: hover del botón primario y fondos sutiles */
+  --royal-bright: #c8a24a; /* dorado puro: botón primario y fondos/bordes/glows destacados */
+  --teal: #a0823b; /* misma variante oscura, para fondos y bordes sutiles del acento */
+  --teal-bright: #82611c; /* dorado oscurecido: texto, iconos y enlaces (contraste AA sobre el fondo crema) */
+
+  --navy-950-rgb: 248, 242, 230;
+  --navy-850-rgb: 234, 217, 182;
+  --navy-800-rgb: 241, 229, 205;
+  --line-rgb: 205, 205, 199;
+  --slate-rgb: 85, 105, 123;
+  --royal-bright-rgb: 200, 162, 74;
+  --teal-rgb: 160, 130, 59;
+  --teal-bright-rgb: 130, 97, 28;
+}

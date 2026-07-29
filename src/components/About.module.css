@@ -1,0 +1,151 @@
+/* El padding/posición de la sección se repite igual en cada sección
+   (About, Skills, Projects, Contact) porque global.css solo guarda lo
+   que de verdad se comparte a nivel de toda la app; esto es un detalle
+   propio de "cómo se ve una sección", así que vive aquí. */
+.section {
+  padding: 108px 0;
+  position: relative;
+}
+.grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 360px) 1fr; /* foto + texto ancho */
+  gap: 60px;
+  align-items: start;
+}
+
+/* ---------- Columna izquierda: foto + nombre ---------- */
+.photoCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* =========================================================================
+   FOTO DE PERFIL (el mismo efecto que antes vivía en el Hero, un poco
+   más grande: se compone de 3 capas superpuestas)
+     1. .photoGlow  → el halo luminoso difuso y animado del fondo
+     2. .photoRing  → el anillo/borde con degradado dorado-navy
+     3. .photo      → la imagen recortada en círculo
+   ========================================================================= */
+.photoWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.photoGlow {
+  position: absolute;
+  width: 314px;
+  height: 314px;
+  border-radius: 50%;
+  /* Dos tonos (acento + navy) para que el halo tenga profundidad, en vez
+     de quedar plano: hoy combina el acento vivo con un navy medio. */
+  background: radial-gradient(circle,
+    rgba(var(--royal-bright-rgb), .45) 0%,
+    rgba(var(--navy-800-rgb), .3) 45%,
+    transparent 70%);
+  filter: blur(45px); /* lo que le da el aspecto de "luz" */
+  animation: glow 5s ease-in-out infinite; /* respira suavemente */
+  z-index: 0;
+}
+
+@keyframes glow {
+  0%, 100% { transform: scale(1);    opacity: .85; }
+  50%      { transform: scale(1.08); opacity: 1; }
+}
+
+.photoRing {
+  position: relative;
+  z-index: 1;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(140deg, var(--royal-bright), var(--navy-800));
+  box-shadow: 0 0 40px -8px rgba(var(--royal-bright-rgb), .55);
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.photoRing:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 60px -6px rgba(var(--teal-bright-rgb), .6);
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top; /* prioriza la cara al recortar */
+  display: block;
+  border: 4px solid var(--navy-950); /* separa la foto del anillo */
+}
+
+/* Nombre con degradado dorado→navy que se desplaza suavemente (background-clip:
+   text pinta el degradado SOLO dentro de las letras; color:transparent deja
+   ver ese degradado en vez del color de texto normal). */
+.name {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.9rem;
+  letter-spacing: -0.01em;
+  background: linear-gradient(90deg, var(--royal-bright), var(--navy-800), var(--royal-bright));
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: nameShift 6s linear infinite;
+}
+
+@keyframes nameShift {
+  to { background-position: 200% center; }
+}
+
+/* ---------- Columna derecha: texto ----------
+   max-width propio: con el contenedor ".wrap" más ancho, la columna de
+   texto (1fr) podía quedar con líneas de más de 90 caracteres. Se limita
+   aquí para mantener buena legibilidad sin tocar el ancho del ".wrap".
+   margin:auto + text-align:center centran todo el bloque (kicker y
+   párrafos) dentro de su columna, en vez de quedar pegado a la izquierda. */
+.text {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+/* Kicker más grande que el párrafo de abajo a propósito: debe leerse como
+   un título destacado ("Analista de Datos y Automatización de Procesos"),
+   no como una etiqueta pequeña. */
+.roleKicker {
+  font-family: var(--mono);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--teal-bright);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 20px;
+}
+.text p {
+  margin-bottom: 18px;
+  font-size: 1.1rem;
+  text-align: justify;
+}
+.text b {
+  color: var(--white);
+  font-weight: 600;
+}
+
+@media (max-width: 820px) {
+  .grid {
+    grid-template-columns: 1fr; /* una sola columna en móvil */
+    gap: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .photoRing { width: 240px; height: 240px; }
+  .photoGlow { width: 254px; height: 254px; }
+}

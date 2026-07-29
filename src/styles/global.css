@@ -1,0 +1,152 @@
+/* =========================================================================
+   global.css  ·  Lo único que de verdad se comparte entre secciones
+   -------------------------------------------------------------------------
+   Aquí vive SOLO lo que usan varios componentes a la vez: el reset
+   inicial del navegador, el fondo de la página, el contenedor ".wrap",
+   los botones ".btn", las etiquetas ".chip" y la animación ".reveal".
+   Todo lo demás (colores/tamaños propios de una sola sección) vive en
+   el *.module.css de su componente, dentro de src/components/.
+   ========================================================================= */
+
+/* -------------------------------------------------------------------------
+   RESET Y BASE
+   El "*" son "todos los elementos": quitamos márgenes que traen los
+   navegadores por defecto para empezar desde cero.
+   ------------------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth; /* al hacer clic en el menú, el scroll baja suave */
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--navy-950);
+  color: var(--slate-light);
+  line-height: 1.65; /* espacio entre líneas de texto */
+  overflow-x: hidden; /* evita scroll horizontal */
+  -webkit-font-smoothing: antialiased; /* texto más nítido */
+  transition: background-color 0.3s, color 0.3s; /* transición suave al cambiar de tema */
+}
+
+/* Capa de fondo con las luces de color (degradados dorado/navy de las esquinas).
+   Los tonos radiales se ven bien en los dos temas; solo cambia el color de
+   fondo base, que en tema claro pasa de casi-negro a casi-blanco. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(800px 460px at 88% -8%, rgba(var(--royal-bright-rgb), 0.16), transparent 60%),
+    radial-gradient(700px 420px at 5% 30%, rgba(var(--teal-rgb), 0.07), transparent 55%),
+    linear-gradient(180deg, var(--navy-950), var(--navy-900));
+}
+
+:root[data-theme="light"] body::before {
+  background: radial-gradient(800px 460px at 88% -8%, rgba(var(--royal-bright-rgb), 0.1), transparent 60%),
+    radial-gradient(700px 420px at 5% 30%, rgba(var(--teal-rgb), 0.06), transparent 55%),
+    linear-gradient(180deg, var(--navy-950), var(--navy-900));
+}
+
+/* Contenedor central que limita el ancho y centra el contenido de cada sección */
+.wrap {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    padding: 0 20px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   BOTONES (se reutilizan en Hero y Contact)
+   ------------------------------------------------------------------------- */
+.btn {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 14px 28px;
+  border-radius: 7px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  transition: 0.25s;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: var(--royal-bright);
+  /* Texto navy fijo (no var(--white), que en oscuro es crema claro): el
+     fondo del botón es el dorado de marca en los DOS temas, y solo el
+     navy oscuro da buen contraste sobre ese dorado en ambos casos. */
+  color: #0b2239;
+  box-shadow: 0 8px 26px -10px rgba(var(--royal-bright-rgb), 0.7);
+}
+.btn-primary:hover {
+  background: var(--royal); /* variante más oscura del acento, ya definida por tema */
+  transform: translateY(-2px); /* sube un poco al pasar el mouse */
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--line);
+}
+.btn-ghost:hover {
+  border-color: var(--teal);
+  color: var(--teal-bright);
+}
+
+/* -------------------------------------------------------------------------
+   CHIPS (etiquetas pequeñas de tecnologías: Skills y ProjectCard)
+   ------------------------------------------------------------------------- */
+.chip {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--slate-light);
+  background: rgba(var(--line-rgb), 0.45);
+  border: 1px solid var(--line);
+  padding: 5px 11px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+:root[data-theme="light"] .chip {
+  background: rgba(var(--line-rgb), 0.55); /* mismo tono de borde, un poco más opaco en claro */
+}
+
+/* Icono monocromático dentro de un chip o botón (ver TechIcon.jsx).
+   El color es fijo (el mismo en los dos temas) para que todos los
+   logos de marca/tecnología se vean siempre del mismo tono, sin
+   importar el color de texto que tengan alrededor. */
+.icon-mono {
+  display: inline-block;
+  flex-shrink: 0;
+  vertical-align: middle;
+  color: var(--teal-bright);
+}
+
+/* -------------------------------------------------------------------------
+   ANIMACIÓN DE APARICIÓN AL HACER SCROLL
+   -------------------------------------------------------------------------
+   Los elementos con clase "reveal" empiezan invisibles y desplazados.
+   El hook useReveal (src/hooks/useReveal.js) les añade la clase "in"
+   cuando entran en pantalla, y esta regla los hace aparecer suavemente.
+   ------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}

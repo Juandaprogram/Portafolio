@@ -1,0 +1,30 @@
+.head {
+  margin-bottom: 56px;
+  max-width: 680px;
+}
+.kicker {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  color: var(--teal-bright);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 18px;
+}
+/* La rayita antes del texto del kicker */
+.kicker::before {
+  content: "";
+  width: 30px;
+  height: 1px;
+  background: var(--teal);
+}
+.title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(2.05rem, 3.9vw, 2.95rem);
+  color: var(--white);
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}

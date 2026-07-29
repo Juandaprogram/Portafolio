@@ -1,0 +1,87 @@
+.section {
+  padding: 108px 0;
+  position: relative;
+}
+
+/* ---------- Grupo "Núcleo": destacado por ser el más importante ---------- */
+.core {
+  background: linear-gradient(155deg, rgba(var(--royal-bright-rgb), 0.14), rgba(var(--teal-rgb), 0.08));
+  border: 1px solid rgba(var(--teal-rgb), 0.35);
+  border-radius: 14px;
+  padding: 32px 34px;
+  margin-bottom: 22px;
+}
+.coreLabel {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--teal-bright);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+.coreItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+.coreItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(var(--navy-950-rgb), 0.35);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 12px 18px;
+  font-family: var(--display);
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--white);
+}
+:root[data-theme="light"] .coreItem {
+  background: rgba(var(--navy-850-rgb), 0.6);
+}
+
+/* ---------- Resto de grupos ---------- */
+.grid {
+  display: grid;
+  /* "auto-fit + minmax" = las tarjetas se reacomodan solas según el ancho */
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: linear-gradient(165deg, var(--navy-900), rgba(var(--navy-850-rgb), 0.4));
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 26px 24px;
+  transition: 0.3s;
+}
+.card:hover {
+  border-color: rgba(var(--teal-rgb), 0.45);
+  transform: translateY(-4px);
+}
+.card h3 {
+  font-family: var(--display);
+  color: var(--white);
+  font-size: 1.02rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.88rem;
+  color: var(--slate-light);
+}
+
+@media (max-width: 560px) {
+  .core { padding: 26px 22px; }
+  .coreItem { padding: 10px 14px; font-size: 0.92rem; }
+}
