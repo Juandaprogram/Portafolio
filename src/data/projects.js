@@ -41,7 +41,7 @@ export const projects = [
     tecnologias: ["Python", "Pandas", "SQL Server", "Power BI", "APIs REST (Requests)", "ETL", "VTEX"],
     urlDetalle: "/proyectos/ecommerce-analytics-pipeline",
     urlGithub: "https://github.com/Juandaprogram/ecommerce-analytics-pipeline",
-    status: "soon",
+    status: "live",
   },
   {
     slug: "analisis-ventas-sql",
