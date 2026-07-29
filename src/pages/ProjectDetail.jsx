@@ -35,7 +35,24 @@ export default function ProjectDetail() {
     );
   }
 
-  const { nombre, fecha, img, enfoque, problema, descripcion, tecnologias, urlGithub, status } = project;
+  const {
+    nombre,
+    fecha,
+    img,
+    enfoque,
+    problema,
+    descripcion,
+    tecnologias,
+    urlGithub,
+    status,
+    contexto,
+    imagenProblema,
+    datos,
+    solucion,
+    imagenesProceso,
+    resultados,
+    imagenDetalle,
+  } = project;
   const githubActivo = status === "live" && Boolean(urlGithub);
 
   return (
@@ -74,6 +91,70 @@ export default function ProjectDetail() {
         </div>
 
         <p className={styles.description}>{descripcion}</p>
+
+        {contexto && (
+          <div className={styles.block}>
+            <h2 className={styles.blockTitle}>El problema</h2>
+            <p className={styles.blockText}>{contexto}</p>
+          </div>
+        )}
+
+        {imagenProblema && (
+          <div className={styles.block}>
+            <h2 className={styles.blockTitle}>Estructura del problema</h2>
+            <img src={imagenProblema} alt={`Estructura del problema de ${nombre}`} className={styles.detailImg} />
+          </div>
+        )}
+
+        {datos && (
+          <div className={styles.block}>
+            <h2 className={styles.blockTitle}>Los datos</h2>
+            <p className={styles.blockText}>{datos}</p>
+          </div>
+        )}
+
+        {imagenDetalle && (
+          <div className={styles.block}>
+            <h2 className={styles.blockTitle}>Estructura de la solución</h2>
+            <img src={imagenDetalle} alt={`Estructura de la solución de ${nombre}`} className={styles.detailImg} />
+          </div>
+        )}
+
+        {solucion && (
+          <div className={styles.block}>
+            <h2 className={styles.blockTitle}>La solución</h2>
+            {solucion.map((paso) => (
+              <div key={paso.titulo} className={styles.step}>
+                <h3 className={styles.stepTitle}>{paso.titulo}</h3>
+                <p className={styles.blockText}>{paso.texto}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {imagenesProceso && imagenesProceso.length > 0 && (
+          <div className={styles.block}>
+            <h2 className={styles.blockTitle}>Resumen del proceso</h2>
+            <div className={styles.gallery}>
+              {imagenesProceso.map((src, i) => (
+                <img key={src} src={src} alt={`Resumen del proceso de ${nombre} ${i + 1}`} className={styles.detailImg} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {resultados && (
+          <div className={styles.block}>
+            <h2 className={styles.blockTitle}>El resultado</h2>
+            <ul className={styles.resultList}>
+              {resultados.map((item) => (
+                <li key={item} className={styles.resultItem}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <div className={styles.stack}>
           {tecnologias.map((tech) => (

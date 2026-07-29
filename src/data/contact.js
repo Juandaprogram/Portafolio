@@ -10,6 +10,6 @@ export const CONTACT = {
   email: "monroyrodriguezjuandavid@gmail.com",
   whatsappUrl: "https://wa.me/573054536859",
   linkedinUrl: "https://www.linkedin.com/in/juanrodriguez-analytics/",
-  githubUrl: "https://github.com/Juandaprogram",
+  githubUrl: "https://github.com/juanrodriguez-analytics",
   cvUrl: "/CV_Juan_David_Rodriguez.pdf",
 };
