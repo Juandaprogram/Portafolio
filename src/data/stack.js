@@ -42,6 +42,7 @@ export const stack = [
       { nombre: "APIs REST (Requests)", icono: { tipo: "lucide", valor: "Plug" } },
       { nombre: "Openpyxl", icono: { tipo: "lucide", valor: "FileSpreadsheet" } },
       { nombre: "IA generativa", icono: { tipo: "lucide", valor: "Sparkles" } },
+      { nombre: "Power Automate", icono: { tipo: "simple", valor: "powerautomate" } },
     ],
   },
   {
