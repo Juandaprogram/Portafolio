@@ -11,5 +11,5 @@ export const CONTACT = {
   whatsappUrl: "https://wa.me/573054536859",
   linkedinUrl: "https://www.linkedin.com/in/juanrodriguez-analytics/",
   githubUrl: "https://github.com/juanrodriguez-analytics",
-  cvUrl: "/CV_Juan_David_Rodriguez.pdf",
+  cvUrl: "/Juan_Rodriguez_Analista_Datos_CV.pdf",
 };
