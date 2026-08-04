@@ -51,7 +51,7 @@
   color: var(--slate);
   opacity: 0.5;
 }
-/* La etiqueta de estado (Proyecto Finalizado / Próximamente) */
+/* La etiqueta de estado (Finalizado / Próximamente) */
 .status {
   position: absolute;
   top: 15px;

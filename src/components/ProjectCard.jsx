@@ -6,7 +6,7 @@ import styles from "./ProjectCard.module.css";
 
 // Texto de la etiqueta de estado según el campo `status` del proyecto.
 const STATUS_LABEL = {
-  live: "Proyecto Finalizado",
+  live: "Finalizado",
   soon: "Próximamente",
 };
 
