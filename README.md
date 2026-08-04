@@ -89,7 +89,7 @@ que ya existen:
 
 Claves a tener en cuenta:
 
-- **`status`** controla la etiqueta ("Proyecto destacado" / "Próximamente")
+- **`status`** controla la etiqueta ("Proyecto Finalizado" / "Próximamente")
   y si los enlaces quedan activos. Un enlace solo es clicable cuando
   `status === "live"` **y** además tiene `url`. Así puedes ir rellenando
   las URLs sin publicar el proyecto todavía: déjalo en `"soon"` hasta que

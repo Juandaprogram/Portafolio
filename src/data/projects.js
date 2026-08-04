@@ -30,6 +30,65 @@
  */
 export const projects = [
   {
+    slug: "seguimiento-atrasos-dropshipping",
+    nombre: "Seguimiento y Alerta Atrasos a Proveedores Dropshipping",
+    fecha: "2026",
+    img: "/proyectos/automatizacion-atrasos-dropshipping/automatizacion-atrasos-dropshipping.png",
+    enfoque: ["Power Automate & Automatización de Procesos"],
+    problema: "Falta de visibilidad sobre pedidos no despachados, generando demoras sistemáticas y saturación en Servicio al Cliente.",
+    descripcion:
+      "Diseñé e implementé un flujo automatizado en Power Automate que evalúa diariamente los tiempos de despacho por proveedor, genera reportes dinámicos de estado (A TIEMPO, PROXIMOS A VENCER y ATRASADOS) y notifica automáticamente a más de 90 proveedores. El proceso se redujo a una ejecución entre 2 y 5 minutos, eliminando la carga manual y reduciendo drásticamente las PQRS y afectaciones al cliente final.",
+    tecnologias: [
+      "Power Automate",
+      "Excel avanzado",
+      "Outlook",
+      "ETL"
+    ],
+    urlDetalle: "/proyectos/seguimiento-atrasos-dropshipping",
+    urlGithub: "https://github.com/juanrodriguez-analytics/",
+    status: "live",
+    contexto:
+      "Anteriormente no existía un mecanismo de alerta preventiva para los proveedores de dropshipping respecto a los pedidos pendientes de despacho. Los retrasos solo salían a la luz cuando el cliente final contactaba a Servicio al Cliente reclamando su paquete. Para solucionar esto, implementé un modelo analítico que calcula los días restantes o de mora según los acuerdos de nivel de servicio (SLA) de cada proveedor. Inicialmente, este seguimiento exigía filtrar manualmente tablas dinámicas para extraer el estado de cada uno de los ~90 proveedores y enviar correos individuales dos veces por semana, lo cual demandaba un tiempo operativo considerable y limitaba la escalabilidad del control.",
+    imagenProblema: "/proyectos/automatizacion-atrasos-dropshipping/flujo_problema_atrasos.png",
+    datos:
+      "El sistema consolida la información operacional de los pedidos y la cruza con la matriz de acuerdos de tiempos de despacho por proveedor. Mediante lógica condicional y concatenación de datos en Excel, se clasifican los pedidos en tres estados clave: 'A tiempo', 'Próximos a vencer' y 'Atrasados'. Esta información se vincula con un directorio estructurado de contactos de proveedores.",
+    solucion: [
+      {
+        titulo: "Optimización de la estructura de datos",
+        texto:
+          "Rediseñé el modelo de datos eliminando la dependencia de tablas dinámicas manuales. Implementé un esquema de control basado en segmentaciones y filtros directos sobre el archivo maestro de Excel, permitiendo que las tablas de estado por proveedor se construyan de forma dinámica sin intervención humana."
+      },
+      {
+        titulo: "Orquestación en Power Automate y triggers temporales",
+        texto:
+          "Configuré un flujo en Power Automate programado mediante un activador temporal (Trigger) para ejecutarse en segundo plano los días martes y jueves en horario matutino. El flujo itera sobre la base de datos, extrae la tabla de control personalizada de cada proveedor, la concatena en un formato visualmente claro y la adjunta al cuerpo del correo."
+      },
+      {
+        titulo: "Integración con Outlook y ordenamiento automático",
+        texto:
+          "El flujo conecta directamente con Outlook para enviar la notificación personalizada usando la base corporativa de contactos. Además, ejecuta reglas de archivado automatizado que clasifican los correos enviados dentro de carpetas específicas por proveedor, evitando la saturación de la bandeja de entrada y garantizando trazabilidad."
+      },
+      {
+        titulo: "Mecanismo de contingencia y tolerancia a fallos",
+        texto:
+          "Se estructuró el flujo con validaciones de errores para garantizar la integridad del envío. En caso de alguna interrupción en el servicio, la estructura lógica del Excel permite ejecutar provisionalmente el filtrado manual sin perder el histórico ni la estructura de datos."
+      }
+    ],
+    imagenesProceso: [
+      "/proyectos/automatizacion-atrasos-dropshipping/Flujo_PowerAutomate_1.png",
+      "/proyectos/automatizacion-atrasos-dropshipping/Flujo_PowerAutomate_2.png",
+      "/proyectos/automatizacion-atrasos-dropshipping/Reporte_Proveedor_Vista.png"
+    ],
+    resultados: [
+      "Reducción drástica de tickets en Call Center: las novedades de alistamiento se detectan y gestionan internamente antes de que se conviertan en reclamos de clientes.",
+      "Automatización total del ciclo de notificación: ejecución en segundo plano completada en un lapso de 2 a 5 minutos, liberando tiempo operativo.",
+      "Reducción de un 99% en margen de error humano en los envíos: la vinculación automatizada entre las bases de datos y la lista de contactos garantiza que cada proveedor reciba únicamente su información correspondiente.",
+      "Mejora en la cultura de cumplimiento: los proveedores cuentan con visibilidad constante sobre sus tiempos de entrega, permitiéndoles reaccionar el mismo día en que se genera un retraso o incluso de forma preventiva."
+    ],
+    imagenDetalle: "/proyectos/automatizacion-atrasos-dropshipping/automatizacion-atrasos-dropshipping.png"
+  },
+  //Reporte  diario Proveedores Dropshipping PEPEGANGA 2025
+  {
     slug: "reporte-diario-dropshipping",
     nombre: "Automatización Reportes Diario a Proveedores Dropshipping",
     fecha: "2025",
@@ -83,24 +142,10 @@ export const projects = [
     imagenDetalle: "/proyectos/reporte-diario-dropshipping/Reporte-Diario-DropShipping-Pepeganga.png",
   },
   {
-    slug: "Automatizacion-atrasos-dropshipping",
-    nombre: "Automatización de Atrasos en Dropshipping",
-    fecha: "2026",
-    img: "/proyectos/automatizacion-atrasos-dropshipping/automatizacion-atrasos-dropshipping.png",
-    enfoque: ["SQL", "Excel"],
-    problema: "Detectar pedidos atrasados en dropshipping que afectaba la satisfacción del cliente y la eficiencia operativa.",
-    descripcion:
-      "Control de atrasos en dropshipping: un flujo automatizado que detecta pedidos atrasados, genera reportes y envía alertas a los responsables.",
-    tecnologias: ["SQL", "SQL Server", "Excel"],
-    urlDetalle: null,
-    urlGithub: null,
-    status: "soon",
-  },
-  {
     slug: "dashboard-kpis-powerbi",
     nombre: "Dashboard de KPIs en Power BI",
     fecha: "2026",
-    img: "/proyectos/dashboard-kpis-powerbi.png",
+    img: "/proyectos/Informe_Servientrega_Logistico/Preview.png",
     enfoque: ["Power BI"],
     problema: "Monitorear KPIs clave de logística y comercial en autoservicio, sin depender de reportes manuales.",
     descripcion:
