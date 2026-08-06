@@ -1,0 +1,83 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/rendercv/rendercv/refs/tags/v2.8/schema.json
+cv:
+  name: JUAN DAVID RODRÍGUEZ
+  headline: Analista de Datos | Business Intelligence | Python & SQL
+  location: Bogotá, Colombia
+  email: monroyrodriguezjuandavid@gmail.com
+  social_networks:
+  - network: WhatsApp
+    username: "+573054536859"
+  - network: LinkedIn
+    username: juanrodriguez-analytics
+  website: https://jdrportafolio.vercel.app
+  sections:
+    Perfil:
+    - Analista de datos con 3 años de experiencia en automatización y optimización de procesos, especializado en transformar datos dispersos en soluciones operativas eficientes con Python, SQL Server y Power BI. Orientado a la mejora continua y la reducción de tiempos y costos, convirtiendo la información en decisiones estratégicas. Tecnólogo en Desarrollo Informático e Ingeniería de Sistemas en curso (décimo semestre).
+    Experiencia profesional:
+    - company: PEPEGANGA
+      position: Analista de Operaciones Ecommerce
+      start_date: 2025-07
+      end_date: 2026-07
+      highlights:
+      - Analicé el ciclo de pedidos en dropshipping para detectar cuellos de botella y transformarlos en decisiones de negocio.
+      - Integré múltiples fuentes de información mediante Python y SQL Server, automatizando procesos manuales para asegurar la trazabilidad de los datos.
+      - Diseñé dashboards en Power BI para el seguimiento de KPIs logísticos y gestioné la consistencia de la información de proveedores en VTEX.
+    - company: PEPEGANGA
+      position: Practicante en Automatización de Procesos con IA
+      start_date: 2024-06
+      end_date: 2025-07
+      highlights:
+      - Automaticé flujos de datos manuales en áreas operativas, logísticas y de ecommerce con Python, reduciendo el tiempo de procesamiento hasta en un 95% y optimizando el código mediante IA generativa.
+      - Centralicé información dispersa conectando APIs externas con SQL Server y administrando datos en VTEX y Connectif.
+      - Desarrollé reportes estratégicos en Power BI para el seguimiento visual de KPIs operativos y comerciales.
+    - company: ARKOS SISTEMAS ARQUITECTÓNICOS
+      position: Practicante Área de Sistemas
+      start_date: 2023-06
+      end_date: 2024-01
+      highlights:
+      - Brindé soporte técnico en la herramienta SAP y gestioné el mantenimiento de hardware, software e infraestructura de redes de la compañía.
+      - Apoyé en la administración del presupuesto del área y elaboré presentaciones ejecutivas para la comunicación de resultados e información interna.
+    Formación:
+    - institution: Universidad ECCI
+      area: Ingeniería de Sistemas
+      degree: Pregrado
+      location: Bogotá, Colombia
+      start_date: '2024'
+      end_date: present
+      highlights:
+      - Décimo semestre en curso.
+    - institution: Universidad ECCI
+      area: Desarrollo Informático
+      degree: Tecnólogo
+      location: Bogotá, Colombia
+      start_date: '2022'
+      end_date: '2024'
+    Tecnologías:
+    - 'Análisis y manipulación de datos: Python (Pandas, Openpyxl) · SQL Server · Excel avanzado'
+    - 'Visualización y Business Intelligence: Power BI · Tableau'
+    - 'Automatización e integración: Scripts en Python · Consumo de APIs REST (Requests) · Procesos ETL'
+    - 'Control de versiones y colaboración: Git / GitHub'
+    - 'Plataformas y entornos: Google Workspace · Microsoft Office · VTEX · Connectif'
+    Habilidades:
+    - Pensamiento analítico · Resolución de problemas · Comunicación de hallazgos al negocio
+    - Mejora continua · Resiliencia · Compromiso con la calidad
+design:
+  theme: moderncv
+  typography:
+    line_spacing: 0.5em
+    font_size:
+      name: 22pt
+  page:
+    top_margin: 1.3cm
+    bottom_margin: 1.3cm
+    left_margin: 1.6cm
+    right_margin: 1.6cm
+  section_titles:
+    space_above: 0.35cm
+    space_below: 0.2cm
+  entries:
+    highlights:
+      space_above: 0.1cm
+      space_between_items: 0.08cm
+locale:
+  language: spanish
